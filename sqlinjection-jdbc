@@ -1,0 +1,36 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.io.*;
+// set classpath=C:\Users\neera\Downloads\mysql-connector-j-9.3.0.zip\mysql-connector-j-9.3.0\
+class JdbcEx {
+
+    public static void main (String[] args) throws SQLException, ClassNotFoundException{
+     String driver=   "com.mysql.cj.jdbc.Driver";
+     String url="jdbc:mysql://localhost:3306/school";
+     String username="root";
+     String pw="Neeraja@123.";
+     try{
+        InputStreamReader i=new InputStreamReader(System.in);
+        BufferedReader b=new BufferedReader(i);
+        System.out.println("Please enter rollno");
+        String rno=b.readLine();
+        System.out.println("Please enter name");
+        String name=b.readLine();
+        Class.forName(driver);
+
+        Connection conn=DriverManager.getConnection(url,username,pw);
+        java.sql.Statement stmt=conn.createStatement();
+        String qry="insert into class9 values("+rno+",'"+name+"')";
+        System.out.println("query is:"+qry);
+        stmt.executeUpdate(qry);
+        conn.close();    
+    }
+    catch(Exception e){
+        System.out.println(e);
+    }
+}
+
+    
+    
+}
