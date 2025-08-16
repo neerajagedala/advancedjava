@@ -38,4 +38,19 @@ This program demonstrates how to use JDBC with a PreparedStatement to insert dat
   ```java
   stmt.setInt(1, Integer.parseInt(ID));
   stmt.setString(2, name);
-
+  
+# JDBC CallableStatement Example – Call Stored Procedure in MySQL  
+**Date:** 16 August 2025  
+This program demonstrates how to use JDBC with a CallableStatement to call a stored procedure from a MySQL database.
+## File
+- **JdbcEx.java**
+  - Connects to a MySQL database using JDBC.
+  - Prompts the user to enter a student `id`.
+  - Calls a stored procedure `getname1` using a CallableStatement.
+  - Retrieves and displays the student's name for the given ID.
+## Key Points
+- **CallableStatement** is used to call stored procedures from the database.  
+- Parameters are set using methods such as:
+  ```java
+  stmt.setInt(1, ID);
+  
