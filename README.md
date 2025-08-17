@@ -53,4 +53,45 @@ This program demonstrates how to use JDBC with a CallableStatement to call a sto
 - Parameters are set using methods such as:
   ```java
   stmt.setInt(1, ID);
+
+  
+## MVC Architecture – Simple Explanation  
+**Date:** 17 August 2025  
+This document explains the **MVC (Model-View-Controller)** architecture in a simple way, commonly used in Java, Spring Boot, and other frameworks to build structured applications.
+## What is MVC?
+- **MVC** stands for **Model – View – Controller**.
+- It is a **design pattern** that separates an application into three main components:
+  1. **Model** – Represents the data and business logic.
+  2. **View** – Represents the user interface (what the user sees).
+  3. **Controller** – Acts as a bridge between Model and View, handling user input and coordinating responses.
+## Components
+1. **Model**
+   - Manages the application data.
+   - Interacts with the database.
+   - Contains business logic (rules, calculations, operations).
+   - Example: `Student.java`, `StudentDAO.java`
+2. **View**
+   - Displays data to the user.
+   - Represents the front-end (HTML, JSP, Thymeleaf, etc.).
+   - Example: `student.jsp`, `student.html`
+3. **Controller**
+   - Handles requests from the user.
+   - Calls the Model to process data.
+   - Sends processed data to the View.
+   - Example: `StudentController.java`
+## How MVC Works (Flow)
+1. The **user sends a request** (e.g., clicking a button or entering data).  
+2. The **Controller** receives the request and decides what to do.  
+3. The **Model** processes the request (fetches data, applies logic).  
+4. The **Controller** sends the data to the **View**.  
+5. The **View** displays the result to the user.  
+## Example (Student Application)
+- **Model**: `Student.java` stores student data like id, name, marks.  
+- **View**: `student.jsp` displays student details.  
+- **Controller**: `StudentController.java` gets the student info from the database through the Model and sends it to the View for display.
+## Key Points
+- MVC makes applications easier to **maintain**, **test**, and **scale**.  
+- It separates **business logic** (Model), **user interface** (View), and **control flow** (Controller).  
+- Used in frameworks like **Spring MVC**, **Struts**, and **ASP.NET MVC**.  
+
   
