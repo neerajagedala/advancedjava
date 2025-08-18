@@ -1,0 +1,25 @@
+// Flow of the Program
+// AddServlet.java
+// Reads input parameters (num1, num2) from the request.
+// Adds the two numbers (k = i + j).
+// Stores the result (k) in a cookie using Cookie and addCookie().
+
+Redirects the response to SqServlet using sendRedirect().
+Cookie cookie = new Cookie("k", String.valueOf(k));
+cookie.setMaxAge(60*5); // Cookie valid for 5 minutes
+res.addCookie(cookie);
+res.sendRedirect("sq");
+
+// SqServlet.java
+// Retrieves the stored value (k) from the cookie.
+// Squares the number.
+Sends the result back to the browser.
+int k = 0;
+Cookie[] cookies = req.getCookies();
+if(cookies != null) {
+    for(Cookie c : cookies) {
+        if(c.getName().equals("k")) {
+            k = Integer.parseInt(c.getValue());
+        }
+    }
+}
