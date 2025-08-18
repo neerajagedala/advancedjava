@@ -161,3 +161,55 @@ This example demonstrates how to use **Servlets in Java** to handle client reque
 **HttpSession** → stores data for the session, survives across requests.
 **sendRedirect()** → sends a new request, URL changes in the browser.
 
+
+## Servlet Example – Using Cookies to Share Data Between Servlets
+**Date:** 18 August 2025
+
+It demonstrates how to use **Cookies** in Java Servlets to share data between multiple servlets. In this example, one servlet (`AddServlet`) adds two numbers and stores the result in a **cookie**, which is then read and squared by another servlet (`SqServlet`).
+### What is a Cookie in Servlets?
+- A **Cookie** is a small piece of data stored on the **client’s browser**.
+- It is used to maintain **state** or **share information** between multiple requests or servlets.
+- Unlike **HttpSession**, cookies can persist even after the browser is closed (if given a max age).
+### How Cookies Work in This Example
+1. **AddServlet**
+   - Receives two numbers from the user via `request.getParameter()`.
+   - Adds the numbers and stores the sum in a **cookie** named `"k"`.
+   - Sends the cookie to the client using `res.addCookie(cookie)`.
+   - Redirects the client to `SqServlet` using `res.sendRedirect("sq")`.
+2. **SqServlet**
+   - Retrieves all cookies from the request using `req.getCookies()`.
+   - Finds the cookie named `"k"` and reads its value.
+   - Squares the value and displays the result to the user.
+   - Prints a message `"sq called"` on the server console for debugging.
+### Key Points
+- `res.sendRedirect("sq")` sends a **new request** to `SqServlet`, so cookies are used to preserve the value across requests.
+- You could also use `RequestDispatcher.forward()` for **server-side forwarding** within the same request, but cookies are necessary when using redirect.
+- Cookies store **strings**, so conversion to `int` is required for arithmetic operations.
+
+---
+
+## Flow of the Program
+1. User enters two numbers in a form and submits to `AddServlet`.
+2. `AddServlet` calculates the sum, stores it in a cookie `"k"`, and redirects to `SqServlet`.
+3. `SqServlet` reads the cookie, squares the value, and displays the result.
+
+---
+## Code Snippets
+### AddServlet.java
+```java
+public class AddServlet extends HttpServlet {
+    public void doGet(HttpServletRequest req, HttpServletResponse res) 
+            throws IOException, ServletException {
+        int i = Integer.parseInt(req.getParameter("num1"));
+        int j = Integer.parseInt(req.getParameter("num2"));
+        int k = i + j;
+
+        Cookie cookie = new Cookie("k", k + "");
+        res.addCookie(cookie);
+        res.sendRedirect("sq");
+        // Alternative: Use RequestDispatcher to forward within same request
+        // RequestDispatcher rd = req.getRequestDispatcher("sq");
+        // rd.forward(req, res);
+    }
+}
+
