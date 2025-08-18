@@ -92,6 +92,67 @@ This document explains the **MVC (Model-View-Controller)** architecture in a sim
 ## Key Points
 - MVC makes applications easier to **maintain**, **test**, and **scale**.  
 - It separates **business logic** (Model), **user interface** (View), and **control flow** (Controller).  
-- Used in frameworks like **Spring MVC**, **Struts**, and **ASP.NET MVC**.  
+- Used in frameworks like **Spring MVC**, **Struts**, and **ASP.NET MVC**.
+Servlet Example – FirstServlet (Hello World)
 
-  
+## Servlet Example – FirstServlet (Hello World)  
+**Date:** 17 August 2025  
+This is the first simple **Servlet program** that demonstrates how to create, configure, and run a **Hello World servlet** in Eclipse using Apache Tomcat.  
+
+## Flow of the Program
+1. **Create Dynamic Web Project (Eclipse)**  
+   - Go to **File → New → Dynamic Web Project**.  
+   - Enter a project name (e.g., `FirstServletProject`).  
+   - Configure the target runtime with **Apache Tomcat**.  
+
+2. **Create Servlet Class (`FirstServlet.java`)**  
+   - Extend the `HttpServlet` class.  
+   - Override the `doGet()` method.  
+   - Use `PrintWriter` to send `"Hello World"` as a response to the client.  
+
+3. **Configure `web.xml` (Deployment Descriptor)**  
+   - Define the servlet name and mapping.  
+   - Example: Map the URL `/hello` to the `FirstServlet` class.  
+
+4. **Run the Application**  
+   - Right-click the project → **Run on Server** → Choose **Tomcat Server**.  
+   - Access the servlet in the browser at:  
+     ```
+     http://localhost:8080/FirstServletProject/hello
+     ```
+## Key Points
+- `HttpServlet` is the base class for creating servlets.  
+- `doGet()` handles **GET requests** from the client (browser).  
+- `PrintWriter` is used to send output (HTML/text) to the response.  
+- `web.xml` maps servlet URLs to servlet classes.
+
+
+  **Servlets are the foundation of Java web applications.**
+  ## Servlet Example – RequestDispatcher & Attribute Passing
+**Date:** 18 August 2025  
+This example demonstrates how to use **Servlets in Java** to handle client requests, pass data between servlets using **RequestDispatcher** and `setAttribute()`, and generate a dynamic response.  
+
+## Flow of the Program
+1. **HTML Form (`index.html`)**  
+   - Takes two numbers as input from the user.  
+   - Submits data to the `/add` servlet using the **GET** method.  
+   - [View Code](index.html)  
+
+2. **`AddServlet.java`**  
+   - Reads input parameters (`num1`, `num2`) from the request.  
+   - Adds the two numbers.  
+   - Stores the result (`k`) as a request attribute.  
+   - Forwards the request to the `SqServlet` using **RequestDispatcher**.  
+3. **`SqServlet.java`**  
+   - Retrieves the attribute (`k`) from the request.  
+   - Squares the result.  
+   - Sends the final output back to the client (browser).  
+4. **`web.xml` (Deployment Descriptor)**  
+   - Maps URLs (`/add` and `/sq`) to their respective servlet classes.  
+   - Ensures the correct servlet is called based on the incoming request.  
+## Key Points
+- **RequestDispatcher** is used to forward the request from one servlet to another.  
+- `setAttribute()` and `getAttribute()` are used to share data between servlets.  
+- `web.xml` acts as a central configuration file for servlet mapping in the web application.  
+- This example demonstrates **Servlet communication** and how to generate **dynamic responses**.  
+
