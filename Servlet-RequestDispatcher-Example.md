@@ -113,5 +113,10 @@ This example demonstrates how to use **Servlets in Java** to handle client reque
 - **RequestDispatcher** is used to forward the request from one servlet to another.  
 - `setAttribute()` and `getAttribute()` are used to share data between servlets.  
 - `web.xml` acts as a central configuration file for servlet mapping in the web application.  
-- This example demonstrates **Servlet communication** and how to generate **dynamic responses**.  
+- This example demonstrates **Servlet communication** and how to generate **dynamic responses**.
+RequestDispatcher → forwards same request, data lasts only for that request.
+HttpSession → stores data for the session, survives across requests.
+HttpSession session = req.getSession();
+int k = (int) session.getAttribute("k");
+sendRedirect() → sends a new request, URL changes in the browser.
 
