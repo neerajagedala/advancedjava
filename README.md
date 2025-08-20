@@ -213,3 +213,20 @@ public class AddServlet extends HttpServlet {
     }
 }
 
+
+# Introduction to JSP (Java Server Pages)
+**Date:** 20 August 2025  
+JSP (**Java Server Pages**) is a server-side technology used to create **dynamic web content** in Java. It allows developers to write HTML pages with embedded Java code. JSP is built on top of the **Servlet API**, and during execution, JSP pages are internally converted into Servlets by the server (like Apache Tomcat).  
+## Why JSP?
+- Easier to write and maintain compared to raw Servlets (less Java boilerplate).
+- Allows mixing **HTML + Java code** using special JSP tags.
+- Good for presentation logic (UI), while Servlets handle business logic.
+- Supports **Expression Language (EL)** and **JSTL** for cleaner code.
+## JSP Lifecycle
+1. **Translation** → JSP is converted into a Servlet by the web container.  
+2. **Compilation** → The generated Servlet is compiled into bytecode.  
+3. **Loading & Initialization** → Servlet class is loaded and initialized.  
+4. **Execution** → The `_jspService()` method executes to handle requests.  
+5. **Destroy** → The container removes JSP from memory when not needed.  
+
+
