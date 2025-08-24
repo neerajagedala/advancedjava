@@ -250,3 +250,50 @@ There are **three main JSP Directives**:
     pageEncoding="UTF-8" import="java.util.Random,java.util.ArrayList" %>
 
 
+# JSP Implicit Objects
+
+**Date:** 24 August 2025  
+
+In JSP, **implicit objects** are pre-defined objects created by the JSP engine.  
+They are available in JSP pages without the need for explicit declaration or creation.  
+
+These objects make it easier to access request data, responses, session, application data, etc.  
+
+---
+
+## 📑 List of JSP Implicit Objects
+1. **request** – Represents the HTTP request data (parameters, headers, cookies).  
+   ```jsp
+   String user = request.getParameter("username");
+2.  **response** – Used to send response data to the client.
+response.setContentType("text/html");
+response.sendRedirect("home.jsp");
+
+3.**out** – Writes output data to the client.
+out.println("Welcome to JSP!");
+
+4.**session** – Represents the user session (stores data across multiple requests).
+session.setAttribute("username", "Neeraja");
+String name = (String) session.getAttribute("username");
+
+5.**application** – Refers to the ServletContext, shared across the entire web application.
+application.setAttribute("appName", "JSPDemoApp");
+String app = (String) application.getAttribute("appName");
+
+6.**config** – Provides servlet configuration details.
+String servletName = config.getServletName();
+
+7.**pageContext** – Provides access to all JSP objects within the page.7
+pageContext.include("header.jsp");
+out.println(page.toString());
+
+8**exception** – Available only in error pages, represents the exception object.
+ut.println("Error: " + exception.getMessage());
+
+##Summary
+JSP provides 9 implicit objects.
+They simplify development by offering direct access to request/response/session/application data.
+No explicit declaration is needed — JSP engine automatically provides them.
+
+
+
