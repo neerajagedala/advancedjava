@@ -230,3 +230,23 @@ JSP (**Java Server Pages**) is a server-side technology used to create **dynamic
 5. **Destroy** → The container removes JSP from memory when not needed.  
 
 
+# JSP Directives Example
+**Date:** 24 August 2025  
+JSP Directives provide special instructions to the JSP engine.  
+They do not produce output directly but affect the overall page behavior.  
+
+There are **three main JSP Directives**:  
+1. Page Directive  
+2. Include Directive  
+3. Taglib Directive
+## 1. Page Directive (`<%@ page ... %>`)
+
+- Defines **page-level settings** like language, imports, and encoding.  
+- Common attributes: `language`, `contentType`, `pageEncoding`, `import`.  
+
+**Example in `home.jsp`:**
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.Random,java.util.ArrayList" %>
+
+
